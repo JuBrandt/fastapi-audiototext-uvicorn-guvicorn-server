@@ -11,12 +11,12 @@ import subprocess
 
 SetLogLevel(0)
 
-if not os.path.exists("model/vosk-model-small-ru-0.15/"):
+if not os.path.exists("./model/vosk-model-small-ru-0.15/"):
     print ("Please download the model from https://alphacephei.com/vosk/models and unpack as 'model' in the current folder.")
     exit (1)
 
 sample_rate=16000
-model = Model("model/vosk-model-small-ru-0.15/")
+model = Model("./model/vosk-model-small-ru-0.15/")
 rec = KaldiRecognizer(model, sample_rate)
 
 process = subprocess.Popen(['ffmpeg', '-loglevel', 'quiet', '-i',

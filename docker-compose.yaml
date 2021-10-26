@@ -1,7 +1,7 @@
 version: '3'
 services:
   core_api:
-    build: .
+    build: ./
     container_name: "fastapi-audiototext-uvicorn-guvicorn"
     ports:
       - "8000:8000"

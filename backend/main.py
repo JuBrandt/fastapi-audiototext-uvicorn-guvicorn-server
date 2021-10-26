@@ -93,9 +93,13 @@ async def upload_file_mp3(request: Request, title: str = Form(...), description:
 
                 return templates.TemplateResponse('download.html', {'request': request})
 
-
-
 @app.get('/', response_class=HTMLResponse)
+def upload_file_mp3(request: Request):
+
+
+    return templates.TemplateResponse('index_.html', {'request': request})
+
+@app.get('/index', response_class=HTMLResponse)
 def upload_file_mp3(request: Request):
 
 
@@ -105,7 +109,7 @@ def upload_file_mp3(request: Request):
 async def create_upload_files(files: List[UploadFile] = File(...)):
     return {"filenames": [file.filename for file in files]}
 
-@app.get("/")
+@app.get("/s")
 async def main():
     content = """
 <body>
@@ -208,7 +212,7 @@ def upload_videotoaudio(request: Request):
 @app.post("/audiototext", response_class=HTMLResponse)
 async def upload_file_wav(request: Request, title: str = Form(...), description: str = Form(...), file: UploadFile = File(...)):
     file_name = f'{uuid4()}_{file.filename}'
-    if file.content_type == 'audio/wav':
+    if file.content_type == 'media/wav':
         async with aiofiles.open(file_name, "wb") as buffer:
             for i in range(10):
                 data = await file.read()
